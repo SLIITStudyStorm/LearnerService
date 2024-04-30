@@ -1,0 +1,11 @@
+{
+  "name": "learnerservice",
+  "version": "1.0.0",
+  "description": "Leaner servic for microservice architecture",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sathira dissanayaka",
+  "license": "ISC"
+}
