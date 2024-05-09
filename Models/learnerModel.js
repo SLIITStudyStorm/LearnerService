@@ -1,21 +1,17 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const learnerSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
   email: {
     type: String,
     required: true,
     unique: true
   },
-  enrolledCourses: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course'
-  }],
+  enrolledCourses: {
+    type: [String],
+    default: []
+  },
 });
 
 const Learner = mongoose.model('Learner', learnerSchema);
 
-export default Learner;
+module.exports = Learner;

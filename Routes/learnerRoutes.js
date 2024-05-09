@@ -1,10 +1,11 @@
-import express from 'express';
-import { enrollCourse, cancelEnrollment, trackProgress } from '../Controller/learnerController';
+const express = require('express');
+const LearnerController = require('../Controller/learnerController');
 
 const router = express.Router();
 
-router.post('/enroll', enrollCourse);
-router.delete('/cancel/:courseId', cancelEnrollment);
-router.get('/progress/:learnerId', trackProgress);
+router.post('/enroll', LearnerController.enrollCourse);
+router.get('/enrolledCourses/:userEmail', LearnerController.getEnrolledCoursesByUserEmail);
+router.delete('/cancel', LearnerController.cancelEnrollment);
+router.get('/progress/:userEmail', LearnerController.trackProgress);
 
-export default router;
+module.exports = router;
