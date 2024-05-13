@@ -71,6 +71,21 @@ cancelEnrollment: async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 },
+getUsersByCourseId: async (req, res) => {
+  try {
+    const { courseId } = req.params;
+
+    // Find all learners who are enrolled in the specified course
+    const learners = await Learner.find({ enrolledCourses: courseId }, 'email');
+
+    // Extract emails from the learners
+    const userEmails = learners.map(learner => learner.email);
+
+    return res.status(200).json({ userEmails });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+},
 
 trackProgress: async (req, res) => {
   try {
